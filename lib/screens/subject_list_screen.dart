@@ -36,7 +36,12 @@ class SubjectListScreen extends StatelessWidget {
               onDismissed: (_) {
                 context.read<GradeTrackerProvider>().removeSubjectAt(index);
               },
-              child: SubjectTile(subject: subject),
+              child: SubjectTile(
+                subject: subject,
+                onDelete: () {
+                  context.read<GradeTrackerProvider>().removeSubjectAt(index);
+                },
+              ),
             ),
           );
         },

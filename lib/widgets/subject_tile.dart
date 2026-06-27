@@ -3,9 +3,14 @@ import 'package:flutter/material.dart';
 import '../models/subject.dart';
 
 class SubjectTile extends StatelessWidget {
-  const SubjectTile({required this.subject, super.key});
+  const SubjectTile({
+    required this.subject,
+    required this.onDelete,
+    super.key,
+  });
 
   final Subject subject;
+  final VoidCallback onDelete;
 
   @override
   Widget build(BuildContext context) {
@@ -32,6 +37,15 @@ class SubjectTile extends StatelessWidget {
               ),
             ),
             _GradeBadge(grade: subject.grade),
+            const SizedBox(width: 8),
+            IconButton(
+              tooltip: 'Delete ${subject.name}',
+              onPressed: onDelete,
+              icon: Icon(
+                Icons.delete_outline,
+                color: theme.colorScheme.error,
+              ),
+            ),
           ],
         ),
       ),
